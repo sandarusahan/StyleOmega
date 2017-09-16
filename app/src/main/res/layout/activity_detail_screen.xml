@@ -5,23 +5,25 @@
     android:id="@+id/activity_detail_screen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.sandaru.styleomega.Activities.DetailScreenActivity">
+    tools:context="com.example.sandaru.styleomega.Activities.DetailScreenActivity"
+    tools:layout_editor_absoluteY="81dp"
+    tools:layout_editor_absoluteX="0dp">
 
     <ImageView
-        app:srcCompat="@color/colorPrimary"
-        android:id="@+id/itemImgView"
+        android:id="@+id/itemImgViewdetail"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginEnd="67dp"
+        android:layout_marginStart="67dp"
+        app:srcCompat="@color/colorPrimary"
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintBottom_creator="1"
         app:layout_constraintBottom_toTopOf="@+id/textView4"
-        android:layout_marginStart="67dp"
-        android:layout_marginEnd="67dp"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="19dp"
         tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="26dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginLeft="67dp"
@@ -32,23 +34,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView4"
-        app:layout_constraintRight_toLeftOf="@+id/itemImgView"
+        app:layout_constraintRight_toLeftOf="@+id/itemImgViewdetail"
         tools:layout_constraintRight_creator="1"
-        app:layout_constraintBaseline_toBaselineOf="@+id/nameView"
-        tools:layout_constraintBaseline_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toTopOf="@+id/textView5"
         tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/itemImgView" />
+        android:layout_marginBottom="21dp"
+        app:layout_constraintLeft_toLeftOf="@+id/itemImgViewdetail" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView5"
+        android:text="@string/price_item"
+        tools:layout_constraintRight_creator="1"
         tools:layout_constraintBottom_creator="1"
         app:layout_constraintBottom_toTopOf="@+id/textView6"
-        tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="24dp"
-        app:layout_constraintLeft_toLeftOf="@+id/textView4"
-        android:text="@string/price_item" />
+        app:layout_constraintRight_toRightOf="@+id/textView6"
+        android:layout_marginBottom="15dp" />
 
     <TextView
         android:text="@string/details_item"
@@ -58,64 +61,99 @@
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintBottom_creator="1"
         app:layout_constraintBottom_toTopOf="@+id/textView7"
-        app:layout_constraintRight_toRightOf="@+id/textView5"
-        tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="24dp"
-        app:layout_constraintLeft_toLeftOf="@+id/textView5" />
+        app:layout_constraintRight_toRightOf="@+id/textView7"
+        android:layout_marginBottom="14dp" />
 
     <TextView
         android:text="@string/available_item"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView7"
+        android:layout_marginEnd="9dp"
+        app:layout_constraintRight_toLeftOf="@+id/cartImgBtndetail"
         tools:layout_constraintRight_creator="1"
-        app:layout_constraintRight_toRightOf="@+id/textView6"
-        app:layout_constraintBaseline_toBaselineOf="@+id/qtyView"
-        tools:layout_constraintBaseline_creator="1"
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/textView6" />
-
-    <TextView
-        android:text="TextView"
-        android:layout_height="wrap_content"
-        android:id="@+id/nameView"
         tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toTopOf="@+id/priceView"
-        tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="24dp"
-        app:layout_constraintLeft_toLeftOf="@+id/priceView"
-        android:layout_width="250dp" />
-
-    <TextView
-        android:text="TextView"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/priceView"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView5"
-        tools:layout_constraintBaseline_creator="1"
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/detailView" />
-
-    <TextView
-        android:text="TextView"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/detailView"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView6"
-        tools:layout_constraintBaseline_creator="1"
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/qtyView" />
-
-    <TextView
-        android:text="TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/qtyView"
-        tools:layout_constraintBottom_creator="1"
-        android:layout_marginStart="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="98dp"
+        android:layout_marginRight="9dp" />
+
+    <TextView
+        android:id="@+id/nameViewdetail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textColor="@android:color/black"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toTopOf="@+id/priceViewdetail"
+        app:layout_constraintRight_toRightOf="@+id/detailViewdetail"
         tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="44dp"
-        app:layout_constraintLeft_toRightOf="@+id/textView7"
-        android:layout_marginLeft="24dp" />
+        android:layout_marginBottom="18dp"
+        app:layout_constraintLeft_toLeftOf="@+id/detailViewdetail" />
+
+    <TextView
+        android:id="@+id/priceViewdetail"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="67dp"
+        android:text="TextView"
+        android:textColor="@android:color/black"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toTopOf="@+id/detailViewdetail"
+        android:layout_marginStart="68dp"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintLeft_toLeftOf="@+id/textView4"
+        android:layout_marginLeft="68dp"
+        android:layout_marginRight="67dp" />
+
+    <TextView
+        android:id="@+id/detailViewdetail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textColor="@android:color/black"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="@+id/qtyViewdetail"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/qtyViewdetail"
+        app:layout_constraintTop_toTopOf="@+id/textView6" />
+
+    <TextView
+        android:id="@+id/qtyViewdetail"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="66dp"
+        android:text="TextView"
+        android:textColor="@android:color/black"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        android:layout_marginEnd="64dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="14dp"
+        app:layout_constraintTop_toBottomOf="@+id/detailViewdetail"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/textView5"
+        android:layout_marginLeft="66dp"
+        android:layout_marginRight="64dp" />
+
+    <ImageButton
+        android:id="@+id/cartImgBtndetail"
+        android:layout_width="194dp"
+        android:layout_height="0dp"
+        app:srcCompat="@mipmap/ic_add_shopping_cart_black_24dp"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="31dp"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="39dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/qtyViewdetail" />
+
 </android.support.constraint.ConstraintLayout>

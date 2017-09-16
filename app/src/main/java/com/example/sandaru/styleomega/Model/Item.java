@@ -9,6 +9,10 @@ public class Item {
    public int id;
    public String name, price, qty, category, desc, img;
 
+    public Item() {
+
+    }
+
     public String getImg() {
         return img;
     }
