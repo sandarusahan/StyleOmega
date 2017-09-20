@@ -24,7 +24,7 @@ import com.example.sandaru.styleomega.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NavigationActivity extends AppCompatActivity {
+public class DisplayActivity extends AppCompatActivity {
 
     private DbHelper db;
     private ListView mDrawerList;
@@ -66,6 +66,7 @@ public class NavigationActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setTitle(mDrawerTitle);
 
         populateList(null,false);
     }
@@ -81,7 +82,7 @@ public class NavigationActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Item it = (Item) itemListView.getItemAtPosition(position);
                 String pname = it.getName();
-                Intent i = new Intent(NavigationActivity.this, DetailScreenActivity.class);
+                Intent i = new Intent(DisplayActivity.this, DetailScreenActivity.class);
                 i.putExtra("pname",  pname);
                 startActivity(i);
             }

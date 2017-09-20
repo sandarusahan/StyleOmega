@@ -4,8 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawer_layout2"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.sandaru.styleomega.Activities.DisplayActivity">
+    android:layout_height="match_parent">
 
 
     <ListView
@@ -18,7 +17,9 @@
         android:layout_width="200dp"
         android:layout_height="match_parent"
         android:layout_gravity="left|start"
-        android:background="#ffeeeeee"/>
+        android:background="#ffeeeeee"
+        app:headerLayout="@layout/navigation_header"
+        />
 
 
 </android.support.v4.widget.DrawerLayout>

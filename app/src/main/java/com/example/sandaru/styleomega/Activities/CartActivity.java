@@ -28,6 +28,7 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
     List<Cart> cartList;
     DbHelper db;
     CartAdapter cartAdapter;
+    int total;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +48,7 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
     }
 
    public void displayTotal(){
-        int total = 0;
+         total = 0;
        int price=0;
         for(int z=0;z<cartList.size();z++){
             cart = cartList.get(z);
@@ -63,6 +64,7 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
         cartListView.setAdapter(cartAdapter);
         cartListView.setClickable(true);
 
+            checkout.setOnClickListener(this);
         /*cartListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -78,6 +80,9 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         if(v.getId() == checkout.getId()){
 
+            Intent i = new Intent(CartActivity.this, CheckoutActivity.class);
+            i.putExtra("total",  total);
+            startActivity(i);
 
         }
     }
