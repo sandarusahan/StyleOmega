@@ -13,28 +13,33 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.sandaru.styleomega.AccessoriesActivity;
+
 import com.example.sandaru.styleomega.Adapters.DrawerItemCustomAdapter;
 import com.example.sandaru.styleomega.Adapters.ItemAdapter;
 import com.example.sandaru.styleomega.DBmanage.DbHelper;
-import com.example.sandaru.styleomega.EditProfileActivity;
 import com.example.sandaru.styleomega.Model.DataModel;
+import com.example.sandaru.styleomega.Model.Item;
 import com.example.sandaru.styleomega.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class NavigationActivity extends AppCompatActivity {
 
     private DbHelper db;
     private ListView mDrawerList;
     public TextView tittle;
+    List<Item> listItem;
 
-
+    private ListView itemListView;
     ItemAdapter customItemAdapter;
-    private ActionBarDrawerToggle mDrawerToggle;
-    private DrawerLayout mDrawerLayout;
-    private String mActivityTitle;
+    public ActionBarDrawerToggle mDrawerToggle;
+    public DrawerLayout mDrawerLayout;
+    public String mActivityTitle;
     private CharSequence mDrawerTitle;
-    private CharSequence mTitle;
-    private String[] mNavigationDrawerItemTitles;
+    public CharSequence mTitle;
+    public String[] mNavigationDrawerItemTitles;
+    String loggeduser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,17 +52,40 @@ public class NavigationActivity extends AppCompatActivity {
 
 
 
+        itemListView = (ListView) findViewById(R.id.listview123);
         mDrawerList = (ListView) findViewById(R.id.navList);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout2);
         mActivityTitle = getTitle().toString();
 
+        Intent i = getIntent();
+
+        loggeduser = i.getStringExtra("EMAIL");
         addDrawerItems();
         setupDrawer();
+
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
+        populateList(null,false);
+    }
+    public void populateList(String cat, boolean l){
+        listItem = new ArrayList<>();
+        listItem = db.getCat(cat,l);
+        customItemAdapter = new ItemAdapter(this, listItem);
+        itemListView.setAdapter(customItemAdapter);
+        itemListView.setClickable(true);
 
+        itemListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Item it = (Item) itemListView.getItemAtPosition(position);
+                String pname = it.getName();
+                Intent i = new Intent(NavigationActivity.this, DetailScreenActivity.class);
+                i.putExtra("pname",  pname);
+                startActivity(i);
+            }
+        });
     }
 
     private void addDrawerItems() {
@@ -97,31 +125,38 @@ public class NavigationActivity extends AppCompatActivity {
 
     private void selectItem(int position) {
 
-        Intent intent;
+       // Intent intent;
 
         switch (position) {
             case 0:
-                intent = new Intent(getApplicationContext(), HomeActivity.class);
-                startActivity(intent);
+                /*intent = new Intent(getApplicationContext(), HomeActivity.class);
+                startActivity(intent);*/
+                populateList(null,false);
                 break;
-           /* case 1:
-                intent = new Intent(getApplicationContext(), MenActivity.class);
-                startActivity(intent);
+            case 1:
+                populateList("M",true);
+                /*intent = new Intent(getApplicationContext(), MenActivity.class);
+                startActivity(intent);*/
                 break;
             case 2:
-                intent = new Intent(getApplicationContext(), WomenActivity.class);
-                startActivity(intent);
+                populateList("W",true);
+               /* intent = new Intent(getApplicationContext(), WomenActivity.class);
+                startActivity(intent);*/
                 break;
             case 3:
-                intent = new Intent(getApplicationContext(), KidsActivity.class);
-                startActivity(intent);
-                break;*/
+                populateList("K",true);
+               /* intent = new Intent(getApplicationContext(), KidsActivity.class);
+                startActivity(intent);*/
+                break;
             case 4:
-                intent = new Intent(getApplicationContext(), AccessoriesActivity.class);
-                startActivity(intent);
+                populateList("A",true);
+
+                /*intent = new Intent(getApplicationContext(), AccessoriesActivity.class);
+                startActivity(intent);*/
                 break;
 
             default:
+                populateList(null,false);
                 break;
         }
 
@@ -170,6 +205,7 @@ public class NavigationActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+
         return true;
     }
 
@@ -179,14 +215,21 @@ public class NavigationActivity extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
+        Intent intent;
         //noinspection SimplifiableIfStatement
+
         if (id == R.id.action_settings) {
-            Intent intent = new Intent(getApplicationContext(), EditProfileActivity.class);
+             intent = new Intent(getApplicationContext(), EditProfileActivity.class);
+            intent.putExtra("EMAIL", loggeduser);
             startActivity(intent);
             return true;
         }
-
+        if(id == R.id.action_cart){
+             intent = new Intent(getApplicationContext(), CartActivity.class);
+            intent.putExtra("EMAIL", loggeduser);
+            startActivity(intent);
+            return true;
+        }
         // Activate the navigation drawer toggle
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;

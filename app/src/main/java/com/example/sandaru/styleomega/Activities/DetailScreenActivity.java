@@ -23,6 +23,7 @@ public class DetailScreenActivity extends AppCompatActivity implements View.OnCl
     ImageButton cartimagebtnd;
     Item item;
 
+    DbHelper database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,11 +37,11 @@ public class DetailScreenActivity extends AppCompatActivity implements View.OnCl
         qtyViewd = (TextView) findViewById(R.id.qtyViewdetail);
         itemImgViewd = (ImageView) findViewById(R.id.itemImgViewdetail);
         cartimagebtnd = (ImageButton) findViewById(R.id.cartImgBtndetail);
-
+        database = new DbHelper(this);
 
         Intent i = getIntent();
 
-      //  int id = Integer.parseInt(i.getLongExtra("id", 0.));
+
         String pname = i.getStringExtra("pname");
         item = db.getItem(pname);
 
@@ -56,8 +57,9 @@ public class DetailScreenActivity extends AppCompatActivity implements View.OnCl
 
     @Override
     public void onClick(View v) {
-        if(cartimagebtnd.getId()== R.id.cartImgBtndetail){
+        if(v.getId()== R.id.cartImgBtndetail){
             Toast.makeText(getApplicationContext(), item.getName()+" added to cart", Toast.LENGTH_SHORT).show();
+            database.addItem(item);
 
         }
     }
