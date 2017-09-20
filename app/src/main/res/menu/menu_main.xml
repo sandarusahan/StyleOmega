@@ -9,9 +9,10 @@
         android:title="@string/action_settings" />
     <item
         android:id="@+id/action_cart"
-        android:icon="@mipmap/ic_add_shopping_cart_black_24dp"
+        android:icon="@mipmap/shoppingcart"
         android:orderInCategory="102"
-        android:title="@string/your_item_cart" />
+        android:title="@string/your_item_cart"
+        app:showAsAction="always" />
     <item
         android:id="@+id/action_search"
         android:icon="@mipmap/magnifyingglass"
